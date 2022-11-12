@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from "./components/container";
+import Header from "./components/header";
+import Card from "./components/card";
+import Calculator from "./components/calculator";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gray-50">
+      <Container>
+        <Header />
+        <Card>
+          <h2 className="font-bold text-xl tracking-tight">
+            Term Deposit Calculator
+          </h2>
+          <Calculator />
+        </Card>
+      </Container>
     </div>
   );
 }
