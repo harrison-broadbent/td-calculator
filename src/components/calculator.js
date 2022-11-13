@@ -1,4 +1,5 @@
 import { useState } from "react";
+import calculateTermDeposit from "../lib /calculateTermDeposit";
 
 export default function Calculator() {
   const [formInfo, setFormInfo] = useState({
@@ -10,34 +11,6 @@ export default function Calculator() {
 
   const [finalBalance, setFinalBalance] = useState(0);
 
-  const calculateTermDeposit = (
-    starting_amount,
-    interest_rate,
-    investment_term,
-    interest_paid
-  ) => {
-    if (interest_paid === "Maturity") {
-      return (
-        Number(starting_amount) +
-        (starting_amount * (interest_rate / 100) * investment_term) / 12
-      );
-    } else {
-      const period =
-        interest_paid === "Monthly"
-          ? 12
-          : interest_paid === "Quarterly"
-          ? 4
-          : 1;
-      return (
-        starting_amount *
-        Math.pow(
-          1 + interest_rate / 100.0 / period,
-          investment_term / (12 / period)
-        )
-      );
-    }
-  };
-
   const handleChange = (event) => {
     setFormInfo({ ...formInfo, [event.target.id]: event.target.value });
   };
@@ -45,7 +18,6 @@ export default function Calculator() {
   const handleSubmit = (event) => {
     // prevents the submit button from refreshing the page
     event.preventDefault();
-    console.log(formInfo);
     setFinalBalance(
       calculateTermDeposit(
         formInfo.starting_amount,
@@ -73,6 +45,7 @@ export default function Calculator() {
                 id="starting_amount"
                 className="block w-full rounded-sm shadow-sm  p-1.5"
                 placeholder="10000"
+                min="0"
                 value={formInfo.starting_amount}
                 onChange={handleChange}
               />
@@ -92,6 +65,7 @@ export default function Calculator() {
                 id="interest_rate"
                 className="block w-full rounded-sm shadow-sm  p-1.5"
                 placeholder="4.5"
+                min="0"
                 value={formInfo.interest_rate}
                 onChange={handleChange}
               />
@@ -113,6 +87,7 @@ export default function Calculator() {
                 id="investment_term"
                 className="block w-full rounded-sm shadow-sm  p-1.5"
                 placeholder="36"
+                min="0"
                 value={formInfo.investment_term}
                 onChange={handleChange}
               />
@@ -142,7 +117,7 @@ export default function Calculator() {
           </div>
         </div>
 
-        <div class="w-full">
+        <div className="w-full">
           <p className="font-bold">Final Balance: </p>
           <p
             className="text-center font-black tracking-tighter text-3xl text-ferocia-purple underline"
@@ -157,7 +132,7 @@ export default function Calculator() {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="inline-flex justify-end items-center rounded-md border border-transparent bg-ferocia-purple px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-ferocia-purple/90 "
+            className=" inline-flex justify-end items-center rounded-md border border-transparent bg-ferocia-purple px-3 py-2 text-sm font-black text-white shadow-sm hover:bg-ferocia-purple/90 "
           >
             Calculate
           </button>

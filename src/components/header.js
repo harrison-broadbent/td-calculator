@@ -1,3 +1,6 @@
+// Header
+// main header for the application
+
 export default function Header() {
   return (
     <div>
