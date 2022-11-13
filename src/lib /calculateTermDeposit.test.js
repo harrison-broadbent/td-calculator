@@ -1,8 +1,7 @@
-import { render } from "@testing-library/react";
-import calculateTermDeposit from "./calculateTermDeposit";
+// calculateTermDeposit.test
+// Tests for the TD interest calculation function
 
-// Tests for the TD interest calculator
-// Tests are segmented by compounding period
+import calculateTermDeposit from "./calculateTermDeposit";
 
 /////////////////
 // At Maturity //
@@ -74,4 +73,14 @@ test("1,000,000 starting, 5% IR, 0.25yrs paid quarterly gives 1,012,552", () => 
 test("50,000 starting, 0% IR, 5yrs paid monthly gives 50,000", () => {
   const interest = calculateTermDeposit("50000", "0", "60", "Monthly");
   expect(interest).toBe(50000);
+});
+
+////////////////
+// Edge cases //
+////////////////
+
+// Negative values —
+test("-1 starting, -1% IR, -1yrs paid monthly gives null", () => {
+  const interest = calculateTermDeposit("-1", "-1", "-12", "Monthly");
+  expect(interest).toBe(null);
 });

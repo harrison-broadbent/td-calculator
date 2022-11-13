@@ -1,7 +1,11 @@
+// Calculator
+// calculator component including DOM elements, state and event handlers
+
 import { useState } from "react";
 import calculateTermDeposit from "../lib /calculateTermDeposit";
 
 export default function Calculator() {
+  // hold state for the input fields
   const [formInfo, setFormInfo] = useState({
     starting_amount: "10000",
     interest_rate: "5.0",
@@ -9,12 +13,15 @@ export default function Calculator() {
     interest_paid: "Quarterly",
   });
 
+  // hold state for the balance we calculate using the formInfo
   const [finalBalance, setFinalBalance] = useState(0);
 
+  // update the internal state whenever our form fields change
   const handleChange = (event) => {
     setFormInfo({ ...formInfo, [event.target.id]: event.target.value });
   };
 
+  // run the calculation when the user submits the form by pressing the calculate button
   const handleSubmit = (event) => {
     // prevents the submit button from refreshing the page
     event.preventDefault();
@@ -117,6 +124,7 @@ export default function Calculator() {
           </div>
         </div>
 
+        {/* Final balance display section */}
         <div className="w-full">
           <p className="font-bold">Final Balance: </p>
           <p
