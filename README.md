@@ -1,8 +1,6 @@
 # Ferocia Take Home Test — Term Deposit Calculator
 
-> React web app for a term deposit interest calculator, developed as a take-home developer assessment for Ferocia.
-
-The calculator is a React app, using create-react-app as a starting point. TailwindCSS is used for component styling.
+> React web app for a term deposit interest calculator, developed as a take-home developer assessment for Ferocia. A React app, using create-react-app as a starting point. TailwindCSS is used for component styling.
 
 ## Running the app
 
@@ -21,7 +19,7 @@ npm run start
 
 There are a few basic tests for the app itself, and some more extensive tests for the actual interest rate calculation function.
 
-You can run the tests by running —
+Run the tests like so —
 
 ```bash
 npm run test
